@@ -12,7 +12,7 @@ public class CarDataSet {
         car.add("Audi");
         car.add("BMW");
         car.add("Toyota");
-        car.add("Lamoborghini");
+        car.add("Lamborghini");
         car.add("Indigo");
         car.add("Indica");
         car.add("Maruti");
