@@ -55,12 +55,7 @@ public class EmployeeTest {
         Iterator<Employee> itr = employeeList.iterator();
         SalaryComparator sc = new SalaryComparator();
         Collections.sort(employeeList, sc);
-//                while(itr.hasNext()) {
-//                    Employee employee = itr.next();
-//                    if(employee.getSalary() > 40000) {
-//                        newList.add(employee);
-//                    }
-//                }
+//
      for (Employee e : employeeList) {
             if (e.getSalary() > 40000) {
                 newList.add(e);

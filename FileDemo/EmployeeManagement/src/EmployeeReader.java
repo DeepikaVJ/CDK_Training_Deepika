@@ -1,7 +1,4 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 
 /**
  * Created by jhanward on 7/28/2017.
@@ -15,10 +12,20 @@ public class EmployeeReader {
         try{
             fis = new FileInputStream("C:\\Users\\jhanward\\IdeaProjects\\CDK_Training_Deepika\\FileDemo\\EmployeeManagement\\EmployeeData.txt");
             ois = new ObjectInputStream(fis);
-            Employee employee = (Employee) ois.readObject();
-            System.out.println(employee.getEmployeeId());
-            System.out.println(employee.getName());
-            System.out.println(employee.getSalary());
+            Object readObject = ois.readObject();
+            while (readObject != null) {
+                Employee employee = (Employee) readObject;
+                System.out.println(employee.getEmployeeId());
+                System.out.println(employee.getName());
+                System.out.println(employee.getSalary());
+                try {
+                    readObject = ois.readObject();
+                } catch (EOFException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
         }catch(ClassNotFoundException e){
             e.printStackTrace();
         }catch(FileNotFoundException e){
