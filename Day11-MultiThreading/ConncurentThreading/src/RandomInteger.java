@@ -9,9 +9,6 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Created by jhanward on 8/1/2017.
  */
 
-/*Write a program using concurrent APIs so that one thread can
-   produce some random integer data and other thread can read it
-   from the same collection and display it on the console.*/
 public class RandomInteger implements Runnable{
     Thread threadOne = null;
     Thread threadTwo = null;
@@ -28,19 +25,12 @@ public class RandomInteger implements Runnable{
         randomList = new LinkedBlockingQueue<>();
         threadOne.start();
         threadTwo.start();
-        try {
-            System.out.println("abc");
-        }
-        finally{
-            System.out.println("Final");
-            System.out.println(randomList.size());
-        }
     }
 
     @Override
     public void run() {
         if(Thread.currentThread()  == threadOne){
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 1000; i++) {
                 try {
                     randomList.put(Math.random()*1000);
                 } catch (InterruptedException e) {
@@ -49,7 +39,6 @@ public class RandomInteger implements Runnable{
             }
         }
         if(Thread.currentThread()  == threadTwo){
-            System.out.println(randomList.size());
             System.out.println(randomList.toString());
         }
     }
